@@ -26,4 +26,6 @@
     border: none;
     font-size: 24px;
     padding: 10px;
+    background-color: rgba(124, 130, 135, 0.512);
+    color: #ffffff;
 }
