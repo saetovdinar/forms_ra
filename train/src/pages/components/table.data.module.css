@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+}
+.date {
+
+}
+.distance {
+
+}
+.btn_cont {
+
+}
+.cancel_btn {
+    width: 20px;
+    height: 20px;
+}

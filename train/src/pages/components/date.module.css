@@ -1,0 +1,10 @@
+.container {
+
+}
+
+.input {
+    width: 200px;
+    height: 50px;
+    border: 1px soli black ;
+    border-radius: 20px;
+}
