@@ -1,7 +1,7 @@
 import styles from './button.module.css'
 
 
-export default function Button({handler}: any) {
+export default function Button({handler}: {handler: () => void}) {
 
 
     return (

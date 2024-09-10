@@ -1,18 +1,26 @@
 import styles from './table.data.module.css'
+interface TableDataProps {
 
+  date: string
+  distance: string
+  clickHandler: () => void
+}
 
-export default function TableData() {
+export default function TableData({ date , distance, clickHandler}: TableDataProps) {
+
     return (
+      
       <div className={styles.container}>
         <p className={styles.date}>
-          12
+          {date}
         </p>
         <p className={styles.distance}>
-          34
+          {distance}
         </p>
         <p className={styles.btn_cont}>
-          <button className={styles.cancel_btn}>x</button>
+          <button  onClick={clickHandler} className={styles.cancel_btn}>x</button>
         </p>
+       
         
       </div>
     );

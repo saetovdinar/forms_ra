@@ -1,14 +1,14 @@
-import TableData from './TableData';
-import styles from './table.module.css'
-export default function Table() {
+
+import styles from './table.module.css';
+
+export default function Table({children}: any) {
  
     return (
       <div className={styles.container}>
-        <p className={styles.description}>
-          <TableData></TableData>
-          <TableData></TableData>
-          <TableData></TableData>
-        </p>
+        <div className={styles.description}>
+          {children}
+        
+        </div>
         
       </div>
     );
