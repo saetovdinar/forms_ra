@@ -13,7 +13,6 @@ export default function App() {
 
   const [tableData, setTableData] = useState<ReactElement[]>([]);
 
-  const [showTable, setShowTable] = useState(true);
 
 
   const [inputDate, setInputDate] = useState({
@@ -26,14 +25,26 @@ export default function App() {
   })
 
   const tableClickHandler = (e: any) => {
+    const filteredTable = tableData.filter((item) => {
+      console.log(+item.id !== +e.target.id)
+      return +item.id !== +e.target.id
 
-    setTableData(tableData.filter((_, index) => index !== e.target.id));
+    }
+    
+  );
+  console.log(tableData)
+  setTableData(filteredTable)
+ 
   }
   const onClickHandler = () => {
-
+   
+    const temporaryId = Math.random();
     setTableData((prevData) => [
       ...prevData,
-       <TableData id={} clickHandler={tableClickHandler} date={inputDate.value} distance={inputDistance.value} />,
+       {
+        elem: <TableData id={temporaryId} clickHandler={tableClickHandler} date={inputDate.value} distance={inputDistance.value} />,
+        id: temporaryId,
+      }
     ]);
     setInputDistance({value: ''});
     setInputDate({value: ''});
@@ -52,7 +63,7 @@ export default function App() {
       <Distance distanceChangeHandler={changeHandlerDistance} item={inputDistance} />
       <Button handler={onClickHandler}/>
       <Table>
-        {tableData}
+        {tableData.map(({elem}) => elem)}
       </Table >
         
     </div>
