@@ -1,25 +1,27 @@
 import styles from './table.data.module.css'
 interface TableDataProps {
-  id: number
-
-  date: string
-  distance: string
-  clickHandler: () => void
+  id: string
+  item: {
+    date: string
+    distance: string
+  }
+  clickHandler: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export default function TableData({id, date , distance, clickHandler}: TableDataProps) {
+
+export default function TableData({id, item, clickHandler}: TableDataProps) {
 
     return (
       
       <div  className={styles.container}>
         <p className={styles.date}>
-          {date}
+          {item.date}
         </p>
         <p className={styles.distance}>
-          {distance}
+          {item.distance + 'km'}
         </p>
         <p className={styles.btn_cont}>
-          <button id={id} onClick={clickHandler} className={styles.cancel_btn}>x</button>
+          <button  id={id}  onClick={clickHandler} className={styles.cancel_btn}>x</button>
         </p>
        
         

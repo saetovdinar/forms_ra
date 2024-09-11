@@ -1,15 +1,27 @@
 import Button from './Button';
 import styles from './form.module.css'
 
+interface FormProps {
+    date: {
+        value: string
+    }
+    distance: {
+        value: string
+    }
+    changeDateHandler: (e: React.ChangeEvent) => void
+    changeDistanceHandler: (e: React.ChangeEvent) => void
+    btnAddItem:  (e: React.MouseEvent<HTMLButtonElement>) => void
+    children: React.ReactNode
+}
 
-export default function Form({date, distance, changeDateHandler, changeDistanceHandler, btnAddItem, children}: any) {
+export default function Form({date, distance, changeDateHandler, changeDistanceHandler, btnAddItem, children}: FormProps) {
  
     return (
         
         <form className={styles.cont}>
             <label className={styles.container}>
                 <p className={styles.description}>Дата (ДД.ММ.ГГ)</p>
-                <input onChange={changeDateHandler} value={date.value} className={styles.input}></input>
+                <input type='date' onChange={changeDateHandler} value={date.value} className={styles.input}></input>
             </label>
             <label className={styles.container}>
                 <p className={styles.description}>Пройдено км</p>

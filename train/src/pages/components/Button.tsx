@@ -1,7 +1,7 @@
 import styles from './button.module.css'
 
 
-export default function Button({addItemHandler}: {addItemHandler: () => void}) {
+export default function Button({ addItemHandler }: { addItemHandler: (e: React.MouseEvent<HTMLButtonElement>) => void }) {
 
 
     return (
