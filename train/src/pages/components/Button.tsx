@@ -1,12 +1,12 @@
 import styles from './button.module.css'
 
 
-export default function Button({handler}: {handler: () => void}) {
+export default function Button({addItemHandler}: {addItemHandler: () => void}) {
 
 
     return (
       <div className={styles.container}>
-        <button onClick={handler} className={styles.btn}>OK</button>
+        <button onClick={addItemHandler} className={styles.btn}>OK</button>
       </div>
     );
   }
