@@ -8,8 +8,8 @@ interface FormProps {
     distance: {
         value: string
     }
-    changeDateHandler: (e: React.ChangeEvent) => void
-    changeDistanceHandler: (e: React.ChangeEvent) => void
+    changeDateHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
+    changeDistanceHandler: (e: React.ChangeEvent<HTMLInputElement>) => void
     btnAddItem:  (e: React.MouseEvent<HTMLButtonElement>) => void
     children: React.ReactNode
 }

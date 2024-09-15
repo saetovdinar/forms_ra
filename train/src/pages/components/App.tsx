@@ -25,18 +25,26 @@ export default function App() {
 
   const putTableHandler = (event: React.MouseEvent<HTMLButtonElement>) : void => {
     event.preventDefault();
-    
+    const compare = (a: Item, b: Item) => {
+      if(a.date > b.date) {
+        return 1;
+      } else if(a.date < b.date) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }
     const continueIter = {value: true};
-    setItemInfo((prevItems: Item[]): Item[] => {
-      if(inputDate.value === '' || inputDistance.value === '') {
-        return prevItems;
+    setItemInfo((): Item[] => {
+      if(inputDate.value === '' || inputDistance.value === '' || isFinite(inputDistance.value)  === false) {
+        return itemInfo;
       }
       
       
-      const newArr = prevItems.map((item) => {
-        //почему-то прибавляет два раза дистанцию
+      const newArr = itemInfo.map((item) => {
+       
         if(item.date === inputDate.value) {
-          item['distance'] = String(parseInt(item['distance']) + (+inputDistance.value));
+          item = {...item, distance: String(parseInt(item.distance) + (+inputDistance.value))}
           continueIter.value = false;
           
         }
@@ -45,17 +53,17 @@ export default function App() {
       })
       if(continueIter.value) {
         
-        return [...newArr,
+        return [...itemInfo,
           {
             date: inputDate.value,
             distance: inputDistance.value,
             id: Math.random()
           }
-        ]
+        ].sort(compare)
        
       }  else {
         continueIter.value = true;
-        return newArr
+        return newArr.sort(compare)
       } 
        
     })
@@ -63,12 +71,12 @@ export default function App() {
     setInputDate({value: ''});
   
   }
-  const changeDateHandler = (e: React.ChangeEvent) => {
-    setInputDate({value: (e.target as HTMLInputElement).value});
+  const changeDateHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputDate({value: e.target.value});
   }
 
-  const changeDistanceHandler = (e: React.ChangeEvent   ) => {
-    setInputDistance({value: (e.target as HTMLInputElement).value});
+  const changeDistanceHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputDistance({value: e.target.value});
   }
   return (
     <div className={styles.container}>
